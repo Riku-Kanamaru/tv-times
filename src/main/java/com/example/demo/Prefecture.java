@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum Prefecture {
     HOKKAIDO("北海道", "札幌市"),
     AOMORI("青森県", "青森市"),
@@ -63,5 +66,9 @@ public enum Prefecture {
 
     public String getCapital() {
         return capital;
+    }
+
+    public static List<Prefecture> getAllPrefectures() {
+        return Arrays.asList(Prefecture.values());
     }
 }

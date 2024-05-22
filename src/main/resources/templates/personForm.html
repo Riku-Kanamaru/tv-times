@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登録画面</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">登録画面</h1>
+        <form action="#" th:action="@{/personForm}" th:object="${person}" method="post">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="name">名前:</label>
+                        <input type="text" id="name" th:field="*{name}" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="prefecture">都道府県:</label>
+                        <select id="prefecture" th:field="*{prefecture}" class="form-control">
+                            <option value="" disabled selected>都道府県を選択してください</option>
+                            <option th:each="pref : ${prefectures}" th:value="${pref.prefectureName}" th:text="${pref.prefectureName}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="capital">県庁所在地:</label>
+                        <select id="capital" th:field="*{capital}" class="form-control">
+                            <option value="" disabled selected>県庁所在地を選択してください</option>
+                            <option th:each="pref : ${prefectures}" th:value="${pref.capital}" th:text="${pref.capital}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">送信</button>
+        </form>
+    </div>
+    <div class="container mt-3">
+        <p>現在時刻: <span th:text="${currentTime}"></span></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
